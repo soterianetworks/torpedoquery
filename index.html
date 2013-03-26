@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Type safe Hibernate query builder (JPA) - Torpedo Query</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TorpedoQuery is a type safe Hibernate (JPA) query builder.">
+    <meta name="author" content="Xavier Jodoin">
+
+    <!-- Le styles -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+      .codestyle {
+      	background-color: rgb(39, 43, 48);
+		font-size: 14px;
+		line-height: 21px;
+		color: rgb(200, 200, 200);
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+         <ul class="nav nav-pills pull-right">
+	     	<li><a href="http://groups.google.com/forum/#!forum/torpedoquery" ><i class="icon-envelope-alt"></i></a></li>
+	     	<li><a href="https://twitter.com/torpedoquery" ><i class="icon-twitter"></i></a></li>
+	     	<li><a href="https://github.com/xjodoin/torpedoquery" ><i class="icon-github-alt"></i></a></li>
+	     </ul>
+        <h3 class="muted">Torpedo Query</h3>
+      </div>
+      
+     <div> 
+	     
+     </div>
+
+      <hr>
+
+      <div class="jumbotron">
+        <h1>HQL query faster and safer</h1>
+        <p class="lead">Use your real classes to construct complex queries and unleash the power of your IDE to maintain and validate them.</p>
+        <a class="btn btn-large btn-success" href="#download">Start now </a>
+      </div>
+
+      <hr>
+
+      <div class="row-fluid marketing" >
+        <div id="before" class="span12">
+          <h4>Before</h4>
+          <pre class="codestyle">Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();
+StringBuilder queryBuilder = new StringBuilder();
+queryBuilder.append("select myVar from SampleObject myVar ");
+queryBuilder.append("where myVar.number &gt; :number and myVar.groupName = :name");
+params.put("number",4);
+params.put("name","supergroup");
+          
+Query query = entityManager.createQuery(queryBuilder.toString());
+for ( Map.Entry&lt;String,Object&gt;; param : params.entrySet()) {
+   	query.setParameter(param.getKey(),param.getValue());
+}
+List&lt;SampleObject&gt; result = (List&lt;SampleObject&gt;)query.getResultList();
+</pre>
+        </div>
+
+
+      </div>
+      <div class="row-fluid marketing" >
+        <div class="span12">
+          <h4>After</h4>
+          <pre class="codestyle">SampleObject from = from(SampleObject.class);
+where(from.getNumber()).gt(4).and(from.getGroupName()).eq("supergroup");
+List&lt;SampleObject&gt; result = select(from).list(manager);
+</pre>
+        </div>
+      </div>
+      <div id="download" class="row-fluid marketing" >
+      <hr>
+        <div class="span12">
+          	<div class="jumbotron">
+		        <a class="btn btn-large btn-warning" href="https://github.com/downloads/xjodoin/torpedoquery/org.torpedoquery-1.4.1-distribution.zip">Last version 1.4.1 </a>
+		        <a class="btn btn-large btn-success" href="https://github.com/xjodoin/torpedoquery/wiki">Documentation </a>
+		      </div>
+          	<h4>Maven</h4>
+			<pre class="codestyle">
+	&lt;dependency&gt;
+    		&lt;groupId&gt;org.torpedoquery&lt;/groupId&gt;
+    		&lt;artifactId&gt;org.torpedoquery&lt;/artifactId&gt;
+    		&lt;version&gt;1.4.1&lt;/version&gt;
+	&lt;/dependency&gt;</pre>          
+        </div>
+      </div>
+      <hr>
+
+      <div class="footer">
+        <p>Distributed under apache 2 licence - &copy; Xavier Jodoin 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+	
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26622513-1']);
+  _gaq.push(['_setDomainName', 'torpedoquery.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+    </script>
+
+  </body>
+</html>
