@@ -1,0 +1,10 @@
+org.torpedoquery.core
+org.torpedoquery.jpa
+org.torpedoquery.jpa.internal
+org.torpedoquery.jpa.internal.conditions
+org.torpedoquery.jpa.internal.functions
+org.torpedoquery.jpa.internal.handlers
+org.torpedoquery.jpa.internal.joins
+org.torpedoquery.jpa.internal.query
+org.torpedoquery.jpa.internal.selectors
+org.torpedoquery.jpa.internal.utils
