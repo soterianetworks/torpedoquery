@@ -56,7 +56,7 @@
 		color: rgb(200, 200, 200);
       }
     </style>
-   
+
 
   </head>
 
@@ -66,7 +66,7 @@
 
       <div class="masthead">
          <ul class="nav nav-pills pull-right">
-	     	<li><a href="http://groups.google.com/forum/#!forum/torpedoquery" ><i class="icon-envelope-alt"></i></a></li>
+	     	<li><a href="http://goo.gl/forms/NWi951iNOQ" ><i class="icon-envelope-alt"></i></a></li>
 	     	<li><a href="https://twitter.com/torpedoquery" ><i class="icon-twitter"></i></a></li>
 	     	<li><a href="https://github.com/xjodoin/torpedoquery" ><i class="icon-github-alt"></i></a></li>
 	     </ul>
@@ -76,9 +76,9 @@
         	<a href="http://www.javadoc.io/doc/org.torpedoquery/org.torpedoquery"><img src="https://camo.githubusercontent.com/5545f2699f48890726e955b0cbf3c03e10a2a9f5/68747470733a2f2f6a617661646f632d656d626c656d2e7268636c6f75642e636f6d2f646f632f6f72672e746f727065646f71756572792f6f72672e746f727065646f71756572792f62616467652e737667" alt="Javadoc" data-canonical-src="https://javadoc-emblem.rhcloud.com/doc/org.torpedoquery/org.torpedoquery/badge.svg" style="max-width:100%;"></a>
         </h3>
       </div>
-      
-     <div> 
-	     
+
+     <div>
+
      </div>
 
       <hr>
@@ -92,6 +92,13 @@
       <hr>
 
       <div class="row-fluid marketing" >
+        <div class="span12">
+          <h3>Subscribe to our newsletter</h3>
+          <a class="btn btn-medium btn-primary" href="http://goo.gl/forms/NWi951iNOQ">Subscribe</a>
+        </div>
+      </div>
+
+      <div class="row-fluid marketing" >
         <div id="before" class="span12">
           <h4>Before</h4>
           <pre class="codestyle">Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();
@@ -100,7 +107,7 @@ queryBuilder.append("select myVar from SampleObject myVar ");
 queryBuilder.append("where myVar.number &gt; :number and myVar.groupName = :name");
 params.put("number",4);
 params.put("name","supergroup");
-          
+
 Query query = entityManager.createQuery(queryBuilder.toString());
 for ( Map.Entry&lt;String,Object&gt;; param : params.entrySet()) {
    	query.setParameter(param.getKey(),param.getValue());
@@ -134,7 +141,7 @@ List&lt;SampleObject&gt; result = select(from).list(manager);
     		&lt;groupId&gt;org.torpedoquery&lt;/groupId&gt;
     		&lt;artifactId&gt;org.torpedoquery&lt;/artifactId&gt;
     		&lt;version&gt;1.7.0&lt;/version&gt;
-	&lt;/dependency&gt;</pre>          
+	&lt;/dependency&gt;</pre>
         </div>
       </div>
       <hr>
@@ -145,7 +152,7 @@ List&lt;SampleObject&gt; result = select(from).list(manager);
 
     </div> <!-- /container -->
 
-	
+
 	<script type="text/javascript">
 
   var _gaq = _gaq || [];
