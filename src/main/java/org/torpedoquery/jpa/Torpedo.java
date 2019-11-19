@@ -29,13 +29,7 @@ import org.torpedoquery.jpa.internal.Selector;
 import org.torpedoquery.jpa.internal.TorpedoMagic;
 import org.torpedoquery.jpa.internal.TorpedoProxy;
 import org.torpedoquery.jpa.internal.conditions.EmptyLogicalCondition;
-import org.torpedoquery.jpa.internal.handlers.ArrayCallHandler;
-import org.torpedoquery.jpa.internal.handlers.GroupingConditionHandler;
-import org.torpedoquery.jpa.internal.handlers.InnerJoinHandler;
-import org.torpedoquery.jpa.internal.handlers.LeftJoinHandler;
-import org.torpedoquery.jpa.internal.handlers.RightJoinHandler;
-import org.torpedoquery.jpa.internal.handlers.ValueHandler;
-import org.torpedoquery.jpa.internal.handlers.WhereClauseHandler;
+import org.torpedoquery.jpa.internal.handlers.*;
 import org.torpedoquery.jpa.internal.joins.InnerJoinBuilder;
 import org.torpedoquery.jpa.internal.joins.LeftJoinBuilder;
 import org.torpedoquery.jpa.internal.joins.RightJoinBuilder;
@@ -237,6 +231,18 @@ public class Torpedo extends TorpedoFunction {
 	}
 
 	/**
+	 * Create HQL inner join fetch
+	 *
+	 * @return a query builder proxy
+	 * @param toJoin a T object.
+	 * @param <T>    a T object.
+	 */
+	public static <T> T innerJoinFetch(T toJoin) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new InnerJoinFetchHandler<T>(torpedoMethodHandler));
+	}
+
+	/**
 	 * Create HQL inner join
 	 *
 	 * @return a query builder proxy
@@ -247,6 +253,19 @@ public class Torpedo extends TorpedoFunction {
 	public static <T, E extends T> E innerJoin(T toJoin, Class<E> realType) {
 		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
 		return torpedoMethodHandler.handle(new InnerJoinHandler<E>(torpedoMethodHandler, realType));
+	}
+
+	/**
+	 * Create HQL inner join fetch
+	 *
+	 * @return a query builder proxy
+	 * @param toJoin   a T object.
+	 * @param realType a {@link java.lang.Class} object.
+	 * @param <T>      a T object.
+	 */
+	public static <T, E extends T> E innerJoinFetch(T toJoin, Class<E> realType) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new InnerJoinFetchHandler<E>(torpedoMethodHandler, realType));
 	}
 
 	/**
@@ -363,6 +382,18 @@ public class Torpedo extends TorpedoFunction {
 	}
 
 	/**
+	 * Create HQL left join fetch
+	 *
+	 * @return a query builder proxy
+	 * @param toJoin a T object.
+	 * @param <T>    a T object.
+	 */
+	public static <T> T leftJoinFetch(T toJoin) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new LeftJoinFetchHandler<T>(torpedoMethodHandler));
+	}
+
+	/**
 	 * Create HQL left join
 	 *
 	 * @return a query builder proxy
@@ -373,6 +404,19 @@ public class Torpedo extends TorpedoFunction {
 	public static <T, E extends T> E leftJoin(T toJoin, Class<E> realType) {
 		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
 		return torpedoMethodHandler.handle(new LeftJoinHandler<E>(torpedoMethodHandler, realType));
+	}
+
+	/**
+	 * Create HQL left join fetch
+	 *
+	 * @return a query builder proxy
+	 * @param toJoin   a T object.
+	 * @param realType a {@link java.lang.Class} object.
+	 * @param <T>      a T object.
+	 */
+	public static <T, E extends T> E leftJoinFetch(T toJoin, Class<E> realType) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new LeftJoinFetchHandler<E>(torpedoMethodHandler, realType));
 	}
 
 	/**

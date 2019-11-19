@@ -28,9 +28,9 @@ import org.torpedoquery.jpa.internal.conditions.LogicalCondition;
 import org.torpedoquery.jpa.internal.query.ValueParameter;
 public abstract class AbstractJoin implements Join {
 
-	private final QueryBuilder join;
-	private String fieldName;
-	private LogicalCondition joinCondition;
+	protected final QueryBuilder join;
+	protected String fieldName;
+	protected LogicalCondition joinCondition;
 
 	/**
 	 * <p>
