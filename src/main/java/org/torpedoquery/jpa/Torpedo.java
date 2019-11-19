@@ -285,6 +285,21 @@ public class Torpedo extends TorpedoFunction {
 
 	/**
 	 * <p>
+	 * innerJoinFetch.
+	 * </p>
+	 *
+	 * @see #innerJoinFetch(Object)
+	 * @param toJoin a {@link java.util.Collection} object.
+	 * @param <T>    a T object.
+	 * @return a T object.
+	 */
+	public static <T> T innerJoinFetch(Collection<T> toJoin) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new InnerJoinFetchHandler<T>(torpedoMethodHandler));
+	}
+
+	/**
+	 * <p>
 	 * innerJoin.
 	 * </p>
 	 *
@@ -297,6 +312,22 @@ public class Torpedo extends TorpedoFunction {
 	public static <T, E extends T> E innerJoin(Collection<T> toJoin, Class<E> realType) {
 		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
 		return torpedoMethodHandler.handle(new InnerJoinHandler<E>(torpedoMethodHandler, realType));
+	}
+
+	/**
+	 * <p>
+	 * innerJoinFetch.
+	 * </p>
+	 *
+	 * @see #innerJoinFetch(Object, Class)
+	 * @param toJoin   a {@link java.util.Collection} object.
+	 * @param realType a {@link java.lang.Class} object.
+	 * @param <T>      a T object.
+	 * @return a E object.
+	 */
+	public static <T, E extends T> E innerJoinFetch(Collection<T> toJoin, Class<E> realType) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new InnerJoinFetchHandler<E>(torpedoMethodHandler, realType));
 	}
 
 	/**
@@ -436,6 +467,21 @@ public class Torpedo extends TorpedoFunction {
 
 	/**
 	 * <p>
+	 * leftJoinFetch.
+	 * </p>
+	 *
+	 * @see #leftJoinFetch(Object)
+	 * @param toJoin a {@link java.util.Collection} object.
+	 * @param <T>    a T object.
+	 * @return a T object.
+	 */
+	public static <T> T leftJoinFetch(Collection<T> toJoin) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new LeftJoinFetchHandler<T>(torpedoMethodHandler));
+	}
+
+	/**
+	 * <p>
 	 * leftJoin.
 	 * </p>
 	 *
@@ -448,6 +494,22 @@ public class Torpedo extends TorpedoFunction {
 	public static <T, E extends T> E leftJoin(Collection<T> toJoin, Class<E> realType) {
 		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
 		return torpedoMethodHandler.handle(new LeftJoinHandler<E>(torpedoMethodHandler, realType));
+	}
+
+	/**
+	 * <p>
+	 * leftJoinFetch.
+	 * </p>
+	 *
+	 * @see #leftJoinFetch(Object, Class)
+	 * @param toJoin   a {@link java.util.Collection} object.
+	 * @param realType a {@link java.lang.Class} object.
+	 * @param <T>      a T object.
+	 * @return a E object.
+	 */
+	public static <T, E extends T> E leftJoinFetch(Collection<T> toJoin, Class<E> realType) {
+		TorpedoMethodHandler torpedoMethodHandler = getTorpedoMethodHandler(toJoin);
+		return torpedoMethodHandler.handle(new LeftJoinFetchHandler<E>(torpedoMethodHandler, realType));
 	}
 
 	/**
